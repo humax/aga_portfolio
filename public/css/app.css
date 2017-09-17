@@ -59,15 +59,11 @@ a:focus, a:hover {
     color: white;
 }
 
-#9b2f74
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
     background-color: #9b2f74;
 }
 
-.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active {
-    background-color: #9b2f74;
-}
 
 #aboutMe > div {
     padding-top:20px;
