@@ -1,0 +1,87 @@
+.album {
+  min-height: 50rem;
+  padding-top: 10rem;
+  padding-top:100px;
+  padding-bottom: 3rem;
+  /*background-color: #f7f7f7;*/
+  display: block;
+  position: relative;
+}
+
+.card-text {
+  font-size: 0.85em;
+  text-align: center;
+}
+
+
+
+
+.nav-tabs { border-bottom: 2px solid #DDD; }
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
+.nav-tabs > li > a { border: none; color: #666; }
+.nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+.nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+.nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
+
+/*.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+.tab-pane { padding: 15px 0; position: relative; }
+.tab-content{padding:20px}*/
+
+
+#navbar {
+  color: black;
+  border: none;
+}
+
+.navbar-brand {
+  font-size: 2em;
+}
+
+.navbar-inverse .navbar-brand {
+    color: white;
+}
+
+#navbar > ul > li  > a {
+    color: white;
+}
+
+
+#aboutMe > div {
+    padding-top:20px;
+}
+
+/*#navbar > ul > li:nth-child(4) { border: none; }*/
+#navbar > ul > li:nth-child(4) > a:hover { border: none; color: white !important; background: transparent; }
+#navbar > ul > li:nth-child(4) > a::after { content: ""; background: white; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+
+
+.lightbox {
+  padding-top: 60px;
+  padding-left: 25%;
+  padding-right: 25%;
+  padding-bottom: 40px;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100vh;
+  min-height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0.9;
+  z-index: 1000;
+}
+
+
+#lightbox > div {
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  border: none;
+}
+
+#lbTitle {
+  color: white;
+}
+
+#lbDescription {
+  color: white;
+  font-style: italic;
+}

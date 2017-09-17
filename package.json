@@ -1,0 +1,25 @@
+{
+  "name": "aga_portfolio",
+  "version": "1.0.0",
+  "description": "Simple personal site for Agnieszka",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humax/aga_portfolio.git"
+  },
+  "author": "Javier Aparicio Conesa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/humax/aga_portfolio/issues"
+  },
+  "homepage": "https://github.com/humax/aga_portfolio#readme",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "google-spreadsheet": "^2.0.4"
+  }
+}
