@@ -20,9 +20,20 @@
       }
 
       function navSelectOption(pos){
-        console.log("selecting: " + pos);
+        // console.log("selecting: " + pos);
         $("#navbar > ul > li.active").removeClass("active");
         $("#navbar > ul > li:nth-child(" + pos + ")").addClass("active");
+        if ( pos === 1 ){
+          $("#lightbox").removeClass("lbAnimate");
+          $( "[data-card-id]" ).show("slow", function(){this.setAttribute("display", "block");} );
+        } else if ( pos === 2 ){
+          $("#lightbox").removeClass("lbAnimate");
+          $( "[data-card-category='Art']" ).hide("slow", function(){$( "[data-card-category='Art']" ).setAttribute("display", "none");});
+          $( "[data-card-category='Architecture']" ).show("slow", function(){this.setAttribute("display", "block");});
+        } else if ( pos === 3 ){
+          $("#lightbox").removeClass("lbAnimate");
+          $( "[data-card-category='Art']" ).show("slow", function(){this.setAttribute("display", "block");});
+          $( "[data-card-category='Architecture']" ).hide("slow", function(){this.setAttribute("display", "none");});        }
       }
     </script>
   </body>

@@ -49,7 +49,7 @@ SiteData.loadData = function( callback ) {
 
       sheet.getRows({
         offset: 1,
-        //limit: 20,
+        orderby: 'id',
         'return-empty': false
       }, function( err, rows ){
 
