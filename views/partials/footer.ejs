@@ -10,14 +10,79 @@
 
     <!-- JS App files-->
     <script type="text/javascript">
-      function showDetails(card){
+      var currentCard;
+      var childIdx = 0;
+
+      function showLightBox(card){
         // console.log(card);
+        currentCard = card;
+
         $("#lbImg").attr("src", card.url);
         $("#lbTitle").text(card.title);
         $("#lbDescription").text(card.desc);
-        // $("#lightbox").removeClass("hidden");
+
+        if ( card.category === "Architecture" && card.imgs.length > 1){
+          $("[data-slide]").removeClass("hidden");
+          if (childIdx === 0){ $('[data-slide="prev"]').addClass("hidden"); }
+          if (childIdx === (currentCard.imgs.length-1)) { $('[data-slide="next"]').addClass("hidden"); }
+        }
+
         $("#lightbox").addClass("lbAnimate");
       }
+
+
+      function hideLightBox(){
+        // console.log(card);
+        currentCard = null;
+        childIdx = 0;
+
+        $("#lbImg").attr("src", "");
+        $("#lbTitle").text("");
+        $("#lbDescription").text("");
+
+        $("[data-slide]").addClass("hidden");
+        $("#lightbox").removeClass("lbAnimate");
+      }
+
+      function nextImg(){
+        if ( currentCard.imgs && (currentCard.imgs.length > 1) && (currentCard.imgs.length-1 > childIdx) ){
+          childIdx++;
+          if (childIdx === (currentCard.imgs.length-1)) {
+            $('[data-slide="next"]').addClass("hidden");
+          }else {
+            $('[data-slide="next"]').removeClass("hidden");
+          }
+
+          if (childIdx === 0){
+            $('[data-slide="prev"]').addClass("hidden");
+          } else {
+            $('[data-slide="prev"]').removeClass("hidden");
+          }
+
+          $("#lbImg").attr("src", currentCard.imgs[childIdx]);
+        }
+      }
+
+      function prevImg(){
+        if ( currentCard.imgs && (currentCard.imgs.length > 1) && (childIdx > 0) ){
+          childIdx--;
+          
+          if (childIdx === (currentCard.imgs.length-1)) {
+            $('[data-slide="next"]').addClass("hidden");
+          }else {
+            $('[data-slide="next"]').removeClass("hidden");
+          }
+
+          if (childIdx === 0){
+            $('[data-slide="prev"]').addClass("hidden");
+          } else {
+            $('[data-slide="prev"]').removeClass("hidden");
+          }
+
+          $("#lbImg").attr("src", currentCard.imgs[childIdx]);
+        }
+      }
+
 
       function navSelectOption(pos){
         // console.log("selecting: " + pos);
