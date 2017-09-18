@@ -38,7 +38,7 @@ a:focus, a:hover {
 }
 
 .navbar-brand {
-  font-size: 2em;
+  font-size: 1.75em;
 }
 
 .navbar-inverse .navbar-brand {
@@ -56,7 +56,7 @@ a:focus, a:hover {
 
 
 #aboutMe > div {
-  padding-top:20px;
+  padding-top:60px;
 }
 
 
@@ -115,11 +115,21 @@ a:focus, a:hover {
 
 .lbAnimate {
   opacity: 1;
-  height: auto;
-  -webkit-transition: all 0.8s ease;
-  -moz-transition: all 0.8s ease;
-  transition: all 0.8s ease;
+  /*height: auto;*/
+  height: 100vh;
+  align-items: center;
+  -webkit-transition: all 0.6s ease;
+  -moz-transition: all 0.6s ease;
+  transition: all 0.6s ease;
 }
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  /*display: flex;*/
+  align-items: center;
+}
+
 
 #lbTitle {
   color: white;

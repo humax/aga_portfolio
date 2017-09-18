@@ -44,7 +44,7 @@
         $("#lightbox").removeClass("lbAnimate");
       }
 
-      function nextImg(){
+      function nextImg(event){
         if ( currentCard.imgs && (currentCard.imgs.length > 1) && (currentCard.imgs.length-1 > childIdx) ){
           childIdx++;
           if (childIdx === (currentCard.imgs.length-1)) {
@@ -61,12 +61,14 @@
 
           $("#lbImg").attr("src", currentCard.imgs[childIdx]);
         }
+
+        event.stopPropagation();
       }
 
-      function prevImg(){
+      function prevImg(event){
         if ( currentCard.imgs && (currentCard.imgs.length > 1) && (childIdx > 0) ){
           childIdx--;
-          
+
           if (childIdx === (currentCard.imgs.length-1)) {
             $('[data-slide="next"]').addClass("hidden");
           }else {
@@ -81,22 +83,24 @@
 
           $("#lbImg").attr("src", currentCard.imgs[childIdx]);
         }
+
+        event.stopPropagation();
       }
 
 
       function navSelectOption(pos){
         // console.log("selecting: " + pos);
-        $("#navbar > ul > li.active").removeClass("active");
-        $("#navbar > ul > li:nth-child(" + pos + ")").addClass("active");
-        if ( pos === 1 ){
+        if ( pos < 4 ){
+          $("#navbar > ul > li.active").removeClass("active");
+          $("#navbar > ul > li:nth-child(" + pos + ")").addClass("active");
           $("#lightbox").removeClass("lbAnimate");
+        }
+        if ( pos === 1 ){
           $( "[data-card-id]" ).show("slow", function(){this.setAttribute("display", "block");} );
         } else if ( pos === 2 ){
-          $("#lightbox").removeClass("lbAnimate");
           $( "[data-card-category='Art']" ).hide("slow", function(){$( "[data-card-category='Art']" ).setAttribute("display", "none");});
           $( "[data-card-category='Architecture']" ).show("slow", function(){this.setAttribute("display", "block");});
         } else if ( pos === 3 ){
-          $("#lightbox").removeClass("lbAnimate");
           $( "[data-card-category='Art']" ).show("slow", function(){this.setAttribute("display", "block");});
           $( "[data-card-category='Architecture']" ).hide("slow", function(){this.setAttribute("display", "none");});        }
       }

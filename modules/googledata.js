@@ -32,28 +32,30 @@ function loadGaleryDetails(childrenDetails, next){
     'return-empty': false
   }, function( err, rows ){
 
-    console.log('Read '+rows.length+' rows');
-    SiteData.cards = [];
+      if (!err){
+        console.log('Read '+rows.length+' rows');
+        SiteData.cards = [];
 
-    rows.forEach(function(row){
-      var card = {
-          id: row.id,
-          title: row.title,
-          url: (!row.url ? defaultImgUrl : row.url),
-          smUrl: getThumbnailUrl((!row.url ? defaultImgUrl : row.url)),
-          desc: row.desc,
-          category: row.category,
-          imgs: ((childrenDetails[row.id] && row.category === "Architecture") ? childrenDetails[row.id] : [])
-      };
+        rows.forEach(function(row){
+          var card = {
+              id: row.id,
+              title: row.title,
+              url: (!row.url ? defaultImgUrl : row.url),
+              smUrl: getThumbnailUrl((!row.url ? defaultImgUrl : row.url)),
+              desc: row.desc,
+              category: row.category,
+              imgs: ((childrenDetails[row.id] && row.category === "Architecture") ? childrenDetails[row.id] : [])
+          };
 
-      SiteData.cards.push(card);
-    });
+          SiteData.cards.push(card);
+        });
 
 
-    // console.log("Data Initialized.");
-    if (next){
-      next();
-    }
+        // console.log("Data Initialized.");
+        if (next){
+          next();
+        }
+      }
 
   });
 
@@ -71,21 +73,23 @@ function loadGaleryItemDetails(next){
     'return-empty': false
   }, function( err, rows ){
 
-    console.log('Read '+rows.length+' rows');
-    var imgs = [];
+    if (!err){
+        console.log('Read '+rows.length+' rows');
+        var imgs = [];
 
-    rows.forEach(function(row){
-      if (imgs[row.parentid]){
-        imgs[row.parentid].push(row.url);
-      } else {
-        imgs[row.parentid] = [row.url];
-      }
-    });
+        rows.forEach(function(row){
+          if (imgs[row.parentid]){
+            imgs[row.parentid].push(row.url);
+          } else {
+            imgs[row.parentid] = [row.url];
+          }
+        });
 
 
-    // console.log("Data Initialized.");
-    if (next){
-      next(imgs, SiteData.notifyEndLoad);
+        // console.log("Data Initialized.");
+        if (next){
+          next(imgs, SiteData.notifyEndLoad);
+        }
     }
 
   });
