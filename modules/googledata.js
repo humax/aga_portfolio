@@ -5,18 +5,26 @@ var SiteData = {
 
 function getThumbnailUrl(url){
   // var thumbMediaProcessorPrefix = "https://mediaprocessor.websimages.com/width/328/crop/0,0,283x211/";
-  var thumbMediaProcessorPrefix = "https://mediaprocessor.websimages.com/width/350/";
-  var smImg;
 
-  if ( url.toLowerCase().indexOf("http://") > -1 ) {
-    smImg = thumbMediaProcessorPrefix + url.substring("http://".length);
-  }else if ( url.toLowerCase().indexOf("https://") > -1 ){
-    smImg = thumbMediaProcessorPrefix + url.substring("https://".length);
-  } else {
-    smImg = url;
-  }
+  // var thumbMediaProcessorPrefix = "https://mediaprocessor.websimages.com/width/350/";
+  // var smImg;
+  //
+  // if ( url.toLowerCase().indexOf("http://") > -1 ) {
+  //   smImg = thumbMediaProcessorPrefix + url.substring("http://".length);
+  // }else if ( url.toLowerCase().indexOf("https://") > -1 ){
+  //   smImg = thumbMediaProcessorPrefix + url.substring("https://".length);
+  // } else {
+  //   smImg = url;
+  // }
+  //
+  // return smImg;
+  return resizeImage(url, 350, 350);
+}
 
-  return smImg;
+
+function resizeImage(imgUrl, width, height){
+  var url = "https://zimage.global.ssl.fastly.net/?url="+imgUrl+"&w="+width+"&h="+height+"&format=png";
+  return url;
 }
 
 
@@ -40,7 +48,7 @@ function loadGaleryDetails(childrenDetails, next){
           var card = {
               id: row.id,
               title: row.title,
-              url: (!row.url ? defaultImgUrl : row.url),
+              url: resizeImage( (!row.url ? defaultImgUrl : row.url), 640, 640),
               smUrl: getThumbnailUrl((!row.url ? defaultImgUrl : row.url)),
               desc: row.desc,
               category: row.category,
@@ -79,9 +87,9 @@ function loadGaleryItemDetails(next){
 
         rows.forEach(function(row){
           if (imgs[row.parentid]){
-            imgs[row.parentid].push(row.url);
+            imgs[row.parentid].push(resizeImage( (!row.url ? defaultImgUrl : row.url), 640, 640));
           } else {
-            imgs[row.parentid] = [row.url];
+            imgs[row.parentid] = [resizeImage( (!row.url ? defaultImgUrl : row.url), 640, 640)];
           }
         });
 

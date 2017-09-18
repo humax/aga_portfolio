@@ -18,7 +18,7 @@
         currentCard = card;
 
         $("#lbImg").attr("src", card.url);
-        $("#lbImg").addClass("img-thumbnail");
+        // $("#lbImg").addClass("img-thumbnail");
         $("#lbTitle").text(card.title);
         $("#lbDescription").text(card.desc);
 
@@ -36,7 +36,7 @@
         currentCard = null;
         childIdx = 0;
 
-        $("#lbImg").removeClass("img-thumbnail");
+        // $("#lbImg").removeClass("img-thumbnail");
         $("#lbImg").attr("src", "");
         $("#lbTitle").text("");
         $("#lbDescription").text("");
