@@ -6,7 +6,7 @@ var SiteData = {
 
 
 function getDefaultImage(width, height){
-  let defaultImgUrl = "https://dummyimage.com/"+width+"x"+height+"/f00/fff";
+  let defaultImgUrl = "https://dummyimage.com/"+width+"x"+height+"/000/fff";
   return defaultImgUrl;
 }
 
@@ -122,8 +122,6 @@ SiteData.loadData = function( callback ) {
   */
   var docId = "1aMYaGdm-3XVFPtHNPF49RQknq84ViiT_l1YCv226jck";
   var doc = new GoogleSpreadsheet(docId);
-  var sheetGalery;
-  var sheetChildren;
 
   doc.getInfo(function(err, info) {
     if (!err){

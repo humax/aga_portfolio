@@ -1,6 +1,4 @@
 
-    <!-- </div> -->
-
 
 
     <!-- JS Libraries-->
@@ -112,35 +110,44 @@
       }
 
       function navSelectOption(pos){
-        if ( pos < 4 ){
+        if ( pos < 3 ){
           $("#navbar > ul > li.active").removeClass("active");
-          $("#navbar > ul > li:nth-child(" + pos + ")").addClass("active");
           $("#lightbox").removeClass("lbAnimate");
-        }
-        if ( pos === 1 ){
-          showCards();
-        } else if ( pos === 2 ){
-          hideCards("Art");
-          showCards("Architecture");
-        } else if ( pos === 3 ){
-          showCards("Art");
-          hideCards("Architecture");
+          $("#aboutMe").collapse("hide");
+
+          if ( pos === 0 ){
+            $("body > div.jumbotron").show(300);
+
+            if ($("#navbar").hasClass("show")){
+              $("#navbar").collapse("hide");
+            }
+
+            hideCards();
+
+          } else if ( pos === 1 ){
+            $("body > div.jumbotron").hide(300);
+            $("#navbar > ul > li:nth-child(" + pos + ")").addClass("active");
+            hideCards("Art");
+            showCards("Architecture");
+
+          } else if ( pos === 2 ){
+            $("body > div.jumbotron").hide(300);
+            $("#navbar > ul > li:nth-child(" + pos + ")").addClass("active");
+            showCards("Art");
+            hideCards("Architecture");
+          }
         }
       }
 
 
       function preloadCardImages(card){
-        // console.log("Call preloadCardImages for...");
-        // console.log(card);
         if (card){
-          // console.log(card.title);
           var cardFullImg = new Image();
           cardFullImg.src = card.url;
 
           if ( card.imgs ){
             var galFullImg;
             card.imgs.forEach(function(galImg){
-              // console.log(galImg);
               galFullImg = new Image();
               galFullImg.src = galImg;
             });

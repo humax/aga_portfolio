@@ -1,3 +1,12 @@
+body {
+  /*font-family: 'Architects Daughter', cursive;*/
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.card {
+  display:none;
+}
+
 .card-text {
   color: black;
   font-size: 0.85em;
@@ -143,4 +152,32 @@ a:focus, a:hover {
   border: none;
   width: auto;
   /*height: 80vh;*/
+}
+
+
+
+.jumbotron {
+  background-size: cover;
+  background-image: url("https://zimage.global.ssl.fastly.net/?url=https://cdn.pixabay.com/photo/2016/10/10/06/45/architecture-1727807_960_720.jpg&format=jpg&quality=100");
+  opacity: 0.9;
+  /*background:rgba(0,0,0,0.8);*/
+
+  /*filter:blur(2px);
+  -o-filter:blur(2px);
+  -ms-filter:blur(2px);
+  -moz-filter:blur(2px);
+  -webkit-filter:blur(2px);*/
+
+  color: black;
+  /*text-shadow: 2px 1px 2px #fff;*/
+}
+
+body > div.jumbotron > div {
+  margin-left: 0;
+  margin-right: 0;
+  padding-right: 15%;
+  padding-left: 15%;
+  border-radius: 5px;
+  background:rgba(255,255,255,0.35);
+  opacity: 1;
 }

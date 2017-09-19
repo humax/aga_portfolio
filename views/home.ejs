@@ -7,7 +7,7 @@
 
           <% siteData.cards.forEach(function(card){ %>
 
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" data-card-id="<%= card.id %>" data-card-category="<%= card.category %>">
+            <div class="card col-xs-4 col-sm-4 col-md-4 col-lg-4" data-card-id="<%= card.id %>" data-card-category="<%= card.category %>">
               <div class="thumbnail" style="border: none;">
                 <a href="#" onclick="showLightBox(<%= JSON.stringify(card) %>);">
                 <img class="img-responsive img-rounded thumb-shadow" src="<%= card.smUrl %>" alt="<%= card.title %>">
