@@ -5,16 +5,28 @@ var SiteData = {
 
 
 
-// var defaultImgUrl = "https://dummyimage.com/283x211/f00/fff";
-var defaultImgUrl = "https://dummyimage.com/300x300/f00/fff";
-
-function getThumbnailUrl(url){
-  return resizeImage(url, 350, 350);
+function getDefaultImage(width, height){
+  let defaultImgUrl = "https://dummyimage.com/"+width+"x"+height+"/f00/fff";
+  return defaultImgUrl;
 }
 
 
-function resizeImage(imgUrl, width, height){
-  var url = "https://zimage.global.ssl.fastly.net/?url="+imgUrl+"&w="+width+"&h="+height+"&format=png";
+function smallImage(url){
+  let size = 350;
+  let format = "jpg";
+  let quality = 80;
+  return resizeImage( (!url ? getDefaultImage(size, size) : url), size, size, format, quality);
+}
+
+function fullImage(url){
+  let size = 640;
+  let format = "jpg";
+  let quality = 100;
+  return resizeImage( (!url ? getDefaultImage(size, size) : url), size, size, format, quality);
+}
+
+function resizeImage(imgUrl, width, height, format, quality){
+  let url = "https://zimage.global.ssl.fastly.net/?url="+imgUrl+"&w="+width+"&h="+height+"&format=" + format+"&quality="+quality;
   return url;
 }
 
@@ -39,8 +51,8 @@ function loadGaleryDetails(childrenDetails, next){
           var card = {
               id: row.id,
               title: row.title,
-              url: resizeImage( (!row.url ? defaultImgUrl : row.url), 640, 640),
-              smUrl: getThumbnailUrl((!row.url ? defaultImgUrl : row.url)),
+              url: fullImage(row.url),
+              smUrl: smallImage(row.url),
               desc: row.desc,
               category: row.category,
               imgs: ((childrenDetails[row.id] && row.category === "Architecture") ? childrenDetails[row.id] : [])
@@ -77,12 +89,11 @@ function loadGaleryItemDetails(next){
 
         rows.forEach(function(row){
           if (imgs[row.parentid]){
-            imgs[row.parentid].push(resizeImage( (!row.url ? defaultImgUrl : row.url), 640, 640));
+            imgs[row.parentid].push( fullImage(row.url) );
           } else {
-            imgs[row.parentid] = [resizeImage( (!row.url ? defaultImgUrl : row.url), 640, 640)];
+            imgs[row.parentid] = [ fullImage(row.url) ];
           }
         });
-
 
         // console.log("Data Initialized.");
         if (next){
