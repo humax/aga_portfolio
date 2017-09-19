@@ -1,5 +1,5 @@
 
-
+    <!-- </div> -->
 
 
 
@@ -127,6 +127,46 @@
           hideCards("Architecture");
         }
       }
+
+
+      function preloadCardImages(card){
+        // console.log("Call preloadCardImages for...");
+        // console.log(card);
+        if (card){
+          // console.log(card.title);
+          var cardFullImg = new Image();
+          cardFullImg.src = card.url;
+
+          if ( card.imgs ){
+            var galFullImg;
+            card.imgs.forEach(function(galImg){
+              // console.log(galImg);
+              galFullImg = new Image();
+              galFullImg.src = galImg;
+            });
+          }
+        }
+
+      }
+
+
+      function preloadImages(){
+        <% siteData.cards.forEach(function(card){ %>
+          preloadCardImages( <%- JSON.stringify(card) %>  );
+        <% } ) %>
+      }
+
+
+      window.addEventListener("orientationchange", function() {
+        document.body.style.width = window.innerWidth;
+        document.body.style.height = window.innerHeight;
+      });
+
+      $(document).ready(function() {
+        console.log("BodyLoaded, preloading gallery images...");
+        preloadImages();
+      });
+
     </script>
   </body>
 </html>
