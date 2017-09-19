@@ -1,13 +1,18 @@
 <% include partials/header.ejs %>
 
     <div class="text-muted">
-      <div class="container">
+      <div class="container-fluid">
 
         <div class="row">
+          <%
+            let i = 0;
+            let category;
 
-          <% siteData.cards.forEach(function(card){ %>
+            siteData.cards.forEach(function(card){
+              if ( i === 0 ){ category = card.category; }
+          %>
 
-            <div class="card col-xs-4 col-sm-4 col-md-4 col-lg-4" data-card-id="<%= card.id %>" data-card-category="<%= card.category %>">
+             <div class="card col-xs-4 col-sm-4 col-md-4 col-lg-4" data-card-id="<%= card.id %>" data-card-category="<%= card.category %>">
               <div class="thumbnail" style="border: none;">
                 <a href="#" onclick="showLightBox(<%= JSON.stringify(card) %>);">
                 <img class="img-responsive img-rounded thumb-shadow" src="<%= card.smUrl %>" alt="<%= card.title %>">
@@ -18,7 +23,18 @@
               </div>
             </div>
 
-          <% } ) %>
+        <%
+            if ( category != card.category ){
+              i = 0;
+              category = card.category;
+            }
+            i++;
+            if ( i % 3 === 0 ){ %>
+            <div class="visible-xs-block visible-sm-block visible-md-block visible-lg-block clearfix"></div>
+        <% }
+
+          } ); //-- End forEach
+        %>
 
         </div>
       </div>
