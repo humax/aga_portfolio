@@ -3,21 +3,12 @@ var SiteData = {
   cards: []
 };
 
-function getThumbnailUrl(url){
-  // var thumbMediaProcessorPrefix = "https://mediaprocessor.websimages.com/width/328/crop/0,0,283x211/";
 
-  // var thumbMediaProcessorPrefix = "https://mediaprocessor.websimages.com/width/350/";
-  // var smImg;
-  //
-  // if ( url.toLowerCase().indexOf("http://") > -1 ) {
-  //   smImg = thumbMediaProcessorPrefix + url.substring("http://".length);
-  // }else if ( url.toLowerCase().indexOf("https://") > -1 ){
-  //   smImg = thumbMediaProcessorPrefix + url.substring("https://".length);
-  // } else {
-  //   smImg = url;
-  // }
-  //
-  // return smImg;
+
+// var defaultImgUrl = "https://dummyimage.com/283x211/f00/fff";
+var defaultImgUrl = "https://dummyimage.com/300x300/f00/fff";
+
+function getThumbnailUrl(url){
   return resizeImage(url, 350, 350);
 }
 
@@ -57,7 +48,6 @@ function loadGaleryDetails(childrenDetails, next){
 
           SiteData.cards.push(card);
         });
-
 
         // console.log("Data Initialized.");
         if (next){
@@ -123,9 +113,6 @@ SiteData.loadData = function( callback ) {
   var doc = new GoogleSpreadsheet(docId);
   var sheetGalery;
   var sheetChildren;
-
-  // var defaultImgUrl = "https://dummyimage.com/283x211/f00/fff";
-  var defaultImgUrl = "https://dummyimage.com/300x300/f00/fff";
 
   doc.getInfo(function(err, info) {
     if (!err){
